@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Page</title>
+</head>
+<body>
+  <h1>Admin Page</h1>
+  <a href="/admin">Back</a>
+<h2>All Users</h2>
+    <ol>
+        <% Users.forEach(function(user) { %>
+            <li>
+                <p><%= "Username: "+user.username %></p>
+                <br>
+                <form action="/admin/delete/<%= user.username %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                  </form>
+            </li>
+ <hr>
+<% }) %>
+</ol>
+</body>
+</html>

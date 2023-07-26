@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Page</title>
+</head>
+<body>
+  <h1>Admin Page</h1>
+  <a href="/admin">Back</a>
+  <h2>All Todos</h2>
+    <% Todos.forEach(function(todo) { %>
+    <p><%= "Username: "+todo.username %></p>
+    <ul>
+        <li><%= todo.task %>
+            <br>
+            Description: <%= todo.description %>
+            <br>
+            Status: <%= todo.completed %> </li>
+            <br>
+            Created at: <%= todo.createdAt%>
+        <br>
+        <form action="/admin/deletet/<%= todo._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+    </ul>
+ <hr>
+<% }) %>
+</body>
+</html>
