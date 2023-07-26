@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+</head>
+<body>
+    <h2><form action="/login"><button>Logout</button></form></h2>
+  <h1>Todo List</h1>
+  <form action="/todo" method="POST">
+    <input type="text" name="task" required>
+    <input type="text" name="description" required>
+    <button type="submit">Add Todo</button>
+  </form>
+  <ol>
+    <% todos.forEach(todo => { %>
+      <li>
+        <!-- <form action="/todo/<%= todo._id %>?_method=PUT" method="POST" style="display: inline-block;">
+          <input type="hidden" name="completed" value="<%= !todo.completed %>">
+          <span style="<%= todo.completed ? 'text-decoration: line-through' : '' %>">
+            <%= todo.task %>
+          </span>
+          <button type="submit"><%= todo.completed ? 'Unmark' : 'Mark' %></button>
+        </form> -->
+        <form action="/todo/<%= todo._id %>?_method=PUT" method="POST" style="display: inline-block;">
+            <input type="hidden" name="completed" value="<%= !todo.completed %>">
+            <span style="<%= todo.completed ? 'text-decoration: line-through' :'' %>">
+                <h3>Task: <%= todo.task %> </h3></li>
+                
+                Description: <%= todo.description%>
+                <br>
+            </span>
+            <br>
+            <button type="submit"><%= todo.completed ?  'Completed':'Pending' %></button>
+          
+        </form>
+          
+        <form action="/todo/<%= todo._id %>?_method=DELETE" method="POST" style="display: inline-block;">
+          <button type="submit">Delete</button>
+        </form>
+        <hr>
+      
+    <% }) %>
+  </ol>
+</body>
+</html>
